@@ -5,18 +5,15 @@
 # Challenge 3
 ![Challenge3](/challenge3.png)
 
-# What is dependency and dev dependency? What’s the difference?
-Dependency is the package/lib/framework used in this project after built.
-Dev Dependency is the package/lib/framework used for development.
-# What is package.json and package-lock.json? What’s the difference?
-Package.json is the overview of script, dependency of this project.
-package-lock contains more detail about the project dependency.
-# What is JSX? Why do we need babel?
-In jsx file, we can write HTML-like code directly inside JavaScript.
-Babel compile the jsx into vanilla js code.
-# SPA vs MPA
-SPA loads a single HTML page once, without reload, update the page by changing the content in the same page.
-MPA uses multiple page. Each page is a separate HTML document.
-# CSR vs SSR
-CSR render the page on clients side, the server sends the code needed to render the page, the client execute the code and generate the page. This has more smooth user experience with initial loading latency.
-SSR renders the page on server side, the server compute all the elements in page and sends the results to clients.
+# What’s the purpose of using the key attribute when we render a list of items in JSX?
+The key attr helps react to keep track of items. When the one item's data is updated, it will uses the key to find the li dom in the ul.
+# What is the “children” props?
+it returns a array of return value from React.createElement.
+jsx defining innerHTML of the component will be parsed to
+js and passed to children props.
+# What is pure function and pure component?
+pure function has no side effect, regardless of outer factors and variables.
+Always returns the same output for the same input.
+Pure Component will render same result with same props and state.
+# What is conditional rendering? How do you implement it effectively?
+Conditional Rendering uses if-else-like statement to conditionally render components. When the condition is satisfied, the component will be rendered, if not, it's not rendered.
