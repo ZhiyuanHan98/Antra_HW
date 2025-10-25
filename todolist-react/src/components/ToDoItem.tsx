@@ -19,7 +19,7 @@ export default function TodoItem({ todo }: IProps) {
       <span className="actions">
         {/* Move button */}
         <button
-          className="icon icon-move"
+          className="actionBtn icon-move"
           title="Move"
         >
           {completed ? icons.left : icons.right}
@@ -27,7 +27,7 @@ export default function TodoItem({ todo }: IProps) {
 
         {/* Edit button */}
         <button
-          className="icon icon-edit"
+          className="actionBtn icon-edit"
           title="Edit"
         >
           {icons.edit}
@@ -35,7 +35,7 @@ export default function TodoItem({ todo }: IProps) {
 
         {/* Delete button */}
         <button
-          className="icon icon-delete"
+          className="actionBtn icon-delete"
           title="Delete"
         >
           {icons.trash}

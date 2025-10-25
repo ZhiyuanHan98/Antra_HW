@@ -32,7 +32,7 @@ body {
     border-color: var(#1f7ae0);
     box-shadow: 0 0 0 3px rgba(31,122,224,.15);
 }
-.btn{
+.submit{
     height: 36px;
     padding: 0 14px;
     border: 0;
@@ -40,12 +40,12 @@ body {
     font-weight: 600;
     cursor: pointer;
 }
-.btn-primary{
+.submit-primary{
     background: #1f7ae0;
     color: #fff;
     box-shadow: 0 8px 28px rgba(2,6,23,.07);
 }
-.btn-primary:hover{
+.submit-primary:hover{
     filter:brightness(1.05)
 }
 
@@ -106,7 +106,7 @@ body {
     display:flex;
     gap: 6px;
 }
-.icon{
+.actionBtn{
     width: 26px;
     height: 26px;
     display:inline-grid;
