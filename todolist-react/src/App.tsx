@@ -9,37 +9,50 @@ interface IProp {
     data: Array<ToDoData>
 }
 
+fetch('https://dummyjson.com/todos/1', {
+  method: 'PUT', /* or PATCH */
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    completed: false,
+  })
+})
+.then(res => res.json())
+.then(console.log);
+
 function App({ data }: IProp) {
     const [todos, setTodo] = useState(data);
     const submitHandler: SubmitHandler = inputValue => {
-        const newTodo = {
-            id: crypto.randomUUID(),
-            title: inputValue,
-            completed: false
+        const request: Partial<ToDoData> = {
+            todo: inputValue,
+            completed: false,
+            userId: todos[0].userId
         };
-        setTodo([...todos, newTodo]);
-        API.createTodo(newTodo);
+        API.createTodo(request).then(newTodo => {
+            setTodo([...todos, newTodo]);
+        })
     }
     const itemEventHandlers: ItemEventHandlers = {
         onToggle(id: string) {
             const newTodos = [...todos];
-            const target = newTodos.find(todo => todo.id === id);
+            const target = newTodos.find(todo => todo.id == id);
             if (!target) throw new Error("Todo Item not found");
             target.completed = !target.completed;
             setTodo(newTodos);
-            API.updateTodo(id, target);
+            API.updateTodo(id, { completed: target.completed })
+            .then(console.log);
         },
-        onEdit(id: string, newTitle: string) {
+        onEdit(id: string, newTodo: string) {
             const newTodos = [...todos];
-            const target = newTodos.find(todo => todo.id === id);
+            const target = newTodos.find(todo => todo.id == id);
             if (!target) throw new Error("Todo Item not found");
-            target.title = newTitle;
+            target.todo = newTodo;
             setTodo(newTodos);
-            API.updateTodo(id, target);
+            API.updateTodo(id, { todo: newTodo })
+            .then(console.log);
         },
         onDelete(id: string) {
-            setTodo(todos.filter(todo => todo.id !== id));
-            API.deleteTodo(id);
+            setTodo(todos.filter(todo => todo.id != id));
+            API.deleteTodo(id).then(console.log);
         },
     }
     return (

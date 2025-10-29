@@ -67,7 +67,7 @@ export function ToDoList({ title, items, handlers }: ListProps) {
                 {   
                     items && items
                     .map(item => (
-                        <TodoItem key={item.id} todo={item}/>
+                        <TodoItem key={item.id} data={item}/>
                     ))
                 }
             </ul>
