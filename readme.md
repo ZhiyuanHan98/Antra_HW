@@ -6,18 +6,13 @@
 ![Challenge3](challenge3.png)
 # Challenge 4
 ![Challenge4](challenge4.png)
-# What is immutability
-Immutability means that data is never changed directly. Instead, a new copy of the data is created and assigned.
-
-# What is state update batching and why
-React batches multiple state updates into a single re-render to Reduces unnecessary DOM updates.
-
-# What are the 2 forms of setState argument and what is the difference
-a. direct value: directly assigned to fixed value
-setCount(5);
-b. function: take account of original count value
-setState(count => count + 1);
-
-# Controlled vs uncontrolled components
-
-React-managed vs DOM-managed input state
+# What is state lifting and props drilling?
+State lifting: move state up to the closest common ancestor so multiple children can read/update
+Props drilling: passing props through many intermediate layers that don’t use them, just to reach a deep child.
+# How to avoid props drilling?
+React Context to put shared state in a Provider -> read with useContext
+# Compare useState vs useReducer. When is useReducer a better choice?
+useState is best for simple, local, independent pieces of state.
+useReducer is best for complex state with multiple fields, interdependent updates, or many event types
+# How to trigger a re-render in React?
+A component re-renders when its render inputs change including the props and states.
