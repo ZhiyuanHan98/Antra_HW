@@ -14,3 +14,14 @@
 ![Challenge7](challenge7.png)
 # Challenge 8
 ![Challenge8](challenge8.png)
+# Why class method sometimes doesn’t have access to ‘this’? How to solve it?
+When you pass a method as a callback, this loses its binding — use function.bind(this) to rebind.
+
+# Explain what lifecycle method is in simple and clear way
+
+Lifecycle methods are special functions in React class components that is invoked when reated, updated, or removed.
+
+
+# When was functional components introduced? What’s the difference between class and functional components?
+
+Functional components were stateless at first. React Hooks (React 16.8) made them stateful and powerful.
