@@ -14,14 +14,25 @@
 ![Challenge7](challenge7.png)
 # Challenge 8
 ![Challenge8](challenge8.png)
-# Why class method sometimes doesn’t have access to ‘this’? How to solve it?
-When you pass a method as a callback, this loses its binding — use function.bind(this) to rebind.
 
-# Explain what lifecycle method is in simple and clear way
+# How to prevent functional/class components from unnecessary re-rendering?
+1. React.memo - Wraps a component to memoize it, compared by shallow comparison
+2. useMemo - Memoizes calculated values between renders, so expensive computations don’t run every time.
+3. Update state immutably
+4. useCallback - Memoizes function references so child components aren’t triggered to re-render because of new function identities.
+# Why use useMemo and useCallback with React.memo?
+React.memo stops re-rendering only if props don’t change — useCallback/useMemo ensure your props don’t change unnecessarily.
 
-Lifecycle methods are special functions in React class components that is invoked when reated, updated, or removed.
+in this code:
 
+const Parent = () => {
+  const handleClick = () => console.log("clicked");
+  return <Child onClick={handleClick} />;
+};
 
-# When was functional components introduced? What’s the difference between class and functional components?
+Even if the parent doesn’t change visually, handleClick is recreated each render
+# Why is immutability important in React?
 
-Functional components were stateless at first. React Hooks (React 16.8) made them stateful and powerful.
+1. It makes change detection predictable and avoids subtle UI not updating bugs.
+
+2. Enables performance optimizations like PureComponent, React.memo, and time-travel debugging.
