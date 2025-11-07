@@ -15,24 +15,47 @@
 # Challenge 8
 ![Challenge8](challenge8.png)
 
-# How to prevent functional/class components from unnecessary re-rendering?
-1. React.memo - Wraps a component to memoize it, compared by shallow comparison
-2. useMemo - Memoizes calculated values between renders, so expensive computations don’t run every time.
-3. Update state immutably
-4. useCallback - Memoizes function references so child components aren’t triggered to re-render because of new function identities.
-# Why use useMemo and useCallback with React.memo?
-React.memo stops re-rendering only if props don’t change — useCallback/useMemo ensure your props don’t change unnecessarily.
+# What is higher order function and hoc?
+A higher-order function is any function that takes another function as an argument or returns a new function.
+function logger(fn) {
+  return (...args) => {
+    return console.log(...args);
+  };
+}
+A Higher-Order Component similarly takes a component as input and returns a new component with extra logic
+# What is currying? 
+Currying means transforming a function that takes multiple arguments into a chain of functions that each take one argument
+Like make the add function
+function add(a, b) {
+  return a + b;
+}
+As:
+const addCurry = (a) => (b) => a + b;
+Invoke this as addCurry(2)(3); 
+# What/why custom hooks? 
+A custom hook is just a function starting with use that built on top of React’s built-in hooks.We can use custom hook to reuse complex logic across components.
+# What is Redux?
+Redux is a predictable state container for JavaScript apps. It centralizes app state in a single store 
+# What are the advantages and disadvantages of Redux?
+Advantages
+Predictable state management
+Centralized logic makes large apps more maintainable
+Integrates well with React by react-redux
 
-in this code:
+Disadvantages
+Overkill for small apps
+Performance issues if not memoized properly
 
-const Parent = () => {
-  const handleClick = () => console.log("clicked");
-  return <Child onClick={handleClick} />;
-};
+# How to connect a React component with Redux store?
+use: useSelector, useDispatch
 
-Even if the parent doesn’t change visually, handleClick is recreated each render
-# Why is immutability important in React?
+function Counter() {
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
 
-1. It makes change detection predictable and avoids subtle UI not updating bugs.
-
-2. Enables performance optimizations like PureComponent, React.memo, and time-travel debugging.
+  return (
+    <button onClick={() => dispatch({ type: "INCREMENT" })}>
+      Count: {count}
+    </button>
+  );
+}
