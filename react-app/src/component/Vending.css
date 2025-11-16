@@ -1,0 +1,68 @@
+.vm-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: sans-serif;
+  background: #fff;
+}
+
+.vm-balance-box {
+  padding: 0.75rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.vm-balance {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.vm-money-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.vm-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.vm-table th,
+.vm-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.vm-message {
+  min-height: 1.5rem;
+  padding: 0.5rem;
+  background: #f0f0f0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}

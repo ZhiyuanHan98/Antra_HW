@@ -13,6 +13,7 @@ import "./autocomplete.css";
 interface AutocompleteProps {
 	options: string[];
 	multiple: boolean;
+    style: React.CSSProperties;
 	onChange?: (value: string[]) => void;
 	placeholder?: string;
 	label?: string;
@@ -46,7 +47,7 @@ function ACDropDown({ filteredOptions, open, onSelect }: ACDropDownProps) {
 }
 
 export default function Autocomplete(props: AutocompleteProps)  {
-	const { options, placeholder = "Choose…", label } = props;
+	const { options, placeholder = "Choose…", label, style } = props;
 
 	const isMultiple = props.multiple === true;
 
@@ -57,9 +58,9 @@ export default function Autocomplete(props: AutocompleteProps)  {
 
     const [selectedValues, setSelected] = useState(new Array<string>());
 
-	const filteredOptions = options.filter((opt) =>
-		opt.toLowerCase().includes(inputValue.toLowerCase())
-	);
+	const filteredOptions = options.filter((opt) => {
+        return opt.toLowerCase().startsWith(inputValue.toLowerCase());
+    });
 
     // Close dropdown when clicking outside
 	useEffect(() => {
@@ -99,7 +100,7 @@ export default function Autocomplete(props: AutocompleteProps)  {
 	}
 
 	return (
-		<div className="ac-root" ref={rootRef}>
+		<div className="ac-root" ref={rootRef} style={style}>
 			{label && <label className="ac-label">{label}</label>}
 			<div className="ac-input-shell">
 				{isMultiple &&
@@ -121,7 +122,7 @@ export default function Autocomplete(props: AutocompleteProps)  {
 					type="text"
 					value={inputValue}
 					onChange={handleInputChange}
-					onFocus={() => setOpen(true)}
+					onFocus={() => {}}
 					placeholder={
 						isMultiple && selectedValues.length > 0 ? "" : placeholder
 					}

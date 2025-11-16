@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Autocomplete from "./component/Autocomplete";
+import VendingMachine from "./component/Vending";
 
 const topMovies: string[] = [
 	"The Shawshank Redemption",
@@ -21,18 +22,20 @@ const App: React.FC = () => {
 
 	return (
 		<div style={{padding: 10}}>
-			<Autocomplete
+			{/* <Autocomplete
 				multiple={true}
 				label="Pick movies"
 				placeholder="Type to search…"
 				options={topMovies}
 				onChange={setMovies}
+                style={{width: "100%", maxWidth: "100%"}}
 			/>
 
 			<p>
 				Selected:
 				<strong>{movies.length ? movies.join(", ") : "(None)"}</strong>
-			</p>
+			</p> */}
+            <VendingMachine></VendingMachine>
 		</div>
 	);
 };
